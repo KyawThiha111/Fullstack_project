@@ -1,19 +1,10 @@
-const http = require("http");
-const fs = require("fs");
-const path = require("path");
+const express = require("express");
+const app = express();
 const PORT = 3000;
-const server = http.createServer((req,res)=>{
-    let filePath = req.url==="/"? path.join(__dirname,"Pages","main.html"):path.join(__dirname,"Pages","profile.html")
-    
-    fs.readFile(filePath,(err,data)=>{
-        if(err) throw err;
-        res.writeHead(200, {"Content-Type": "text/html"});
-        res.end(data,"utf-8")
-    })
 
-    res.writeHead
+app.get("/",(req,res)=>{
+res.send("Main Page")
 })
-
-server.listen(PORT,(res)=>{
-    console.log(`The sever is listening to PORT ${PORT}`);
+app.listen(PORT,(respond)=>{
+    console.log("Express server has been established.")
 })
